@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="row"  style="margin-top: 30px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-1">Who are U?</div>
+            <div class="col-sm-3">
+                <select [(ngModel)]="DepartmentNo" class="form-control">
+                    <option value="">-Select Department-</option>
+                    <option *ngFor="let dept of DeptList" value="{{dept.deptNo}}">{{dept.dName}}</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+
+            <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-1">UserName</div>
+            <div class="col-sm-3">
+                <input type="text" [(ngModel)]="Username" placeholder="Enter your name" class="form-control" />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-1">Password</div>
+            <div class="col-sm-3">
+                <input type="password" [(ngModel)]="Password"  placeholder="Enter your Password" class="form-control" />
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+ 
+        
+        <div class="row" style="margin-top: 30px;margin-left: 20px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+        
+                <input  type="button" value="Login" class="btn btn-danger" (click)="btn_Login()"  /> |
+                <input  type="button" value="Cancel" class="btn btn-warning" (click)="btn_Cancel()"  /> 
+            </div>
+            <div class="col-sm-1"></div>
+
+<br />
+<br />
+<br />
+<br />
+
+    </div>
+</div>
