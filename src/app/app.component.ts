@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
       if(sessionval=="10"){
       this.flagRec=true;
       this.flagHelp=false;
-      }else if(sessionval=="20"){
+      }else{
         this.flagRec=false;
         this.flagHelp=true;
       }

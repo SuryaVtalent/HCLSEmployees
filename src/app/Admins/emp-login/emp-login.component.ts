@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { IReception } from '../../Models/IReception';
 import { IHelper } from '../../Models/IHelper';
 import { HelpersService } from '../../Services/helpers.service';
+import { DoctorService } from '../../Services/doctor.service';
 
 @Component({
   selector: 'app-emp-login',
@@ -27,7 +28,7 @@ export class EmpLoginComponent implements OnInit {
   
   
   constructor(private deptser:DepartmentService,private recpser:ReceptionService,
-             private helpser:HelpersService,
+             private helpser:HelpersService,private docser:DoctorService,
     
              private router:Router){}
 
@@ -85,6 +86,17 @@ export class EmpLoginComponent implements OnInit {
      }
      case 30:{
       //Doctor login logic
+      this.docser.Checklogin(this.Username,this.Password).subscribe((data:any)=>{
+        if(data==null){
+          alert("You are not registerd");
+          this.router.navigate(["login"]);
+        }else{
+          window.sessionStorage.setItem("emplogin",JSON.stringify(data));
+            window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
+
+            this.router.navigate(["doctorpro"]);
+        }
+      })
       break;
    }
    case 40:{

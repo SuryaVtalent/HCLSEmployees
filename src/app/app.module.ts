@@ -18,6 +18,8 @@ import { DoctorComponent } from './Profiles/doctor/doctor.component';
 import { LabComponent } from './Profiles/lab/lab.component';
 import { ReceptionService } from './Services/reception.service';
 import { HelpersService } from './Services/helpers.service';
+import { DoctorService } from './Services/doctor.service';
+import { LabService } from './Services/lab.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { HelpersService } from './Services/helpers.service';
     DepartmentService,
     ReceptionService,
     HelpersService,
+    DoctorService,
+    LabService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
