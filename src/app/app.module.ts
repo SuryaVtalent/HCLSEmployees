@@ -20,6 +20,7 @@ import { ReceptionService } from './Services/reception.service';
 import { HelpersService } from './Services/helpers.service';
 import { DoctorService } from './Services/doctor.service';
 import { LabService } from './Services/lab.service';
+import { ActiveComponent } from './Admins/active/active.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LabService } from './Services/lab.service';
     ReceptionistComponent,
     HelperComponent,
     DoctorComponent,
-    LabComponent
+    LabComponent,
+    ActiveComponent
   ],
   imports: [
     BrowserModule,

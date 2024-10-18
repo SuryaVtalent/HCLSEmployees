@@ -22,4 +22,8 @@ export class HelpersService {
     debugger;
     return this.httpser.get<IHelper>(this.HostUrl+this.HelperWebPath+"CheckLogin?Email="+email+"&Password="+pwd);
   }
+
+  UpdateHelper(help:IHelper):Observable<number>{
+   return this.httpser.put<number>(this.HostUrl+this.HelperWebPath+"UpdateHelper",help);
+  }
 }

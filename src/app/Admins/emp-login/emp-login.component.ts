@@ -7,6 +7,7 @@ import { IReception } from '../../Models/IReception';
 import { IHelper } from '../../Models/IHelper';
 import { HelpersService } from '../../Services/helpers.service';
 import { DoctorService } from '../../Services/doctor.service';
+import { LabService } from '../../Services/lab.service';
 
 @Component({
   selector: 'app-emp-login',
@@ -28,36 +29,69 @@ export class EmpLoginComponent implements OnInit {
   
   
   constructor(private deptser:DepartmentService,private recpser:ReceptionService,
-             private helpser:HelpersService,private docser:DoctorService,
+             private helpser:HelpersService,private docser:DoctorService,private labser:LabService,
     
              private router:Router){}
 
   ngOnInit(): void {
+
+    
+  
+
+
     this.deptser.GetAllDepartments().subscribe(data=>{
       this.DeptList=data;
     },error=>alert(error));
     
   }
 
+
+  Alert():void{
+    let sessionlog=window.sessionStorage.getItem("emplogin");
+    if(sessionlog==null){
+      alert("You are not Registerd");
+    }
+  }
+
+
+  
+
   btn_Login():void{
    debugger;
 
+   
+   
+
     switch(parseInt(this.DepartmentNo!)){
+
+      
     
       case 10:{
+        
         debugger;
          //Reception login logic
+         
+         
          this.recpser.checkLogin(this.Username,this.Password).subscribe((data:any)=>{
           if(data==null){
             alert("You are not Registerd with us");
             this.router.navigate(["login"]);
           }else{
             window.sessionStorage.setItem("emplogin",JSON.stringify(data));
-            window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
+            
+            window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo));
+
+             if(data.active==true){
 
               this.router.navigate(["receptionpro"]).then(()=>{
                 window.location.reload();
               });
+            }else{
+              alert("You are not activated");
+              this.router.navigate(["active"]).then(()=>{
+                window.location.reload();
+              });
+            }
            }
         })
          break;
@@ -73,10 +107,16 @@ export class EmpLoginComponent implements OnInit {
         }else{
           window.sessionStorage.setItem("emplogin",JSON.stringify(data));
             window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
-
+           
+            if(data.active==true){
           this.router.navigate(["helperpro"]).then(()=>{
             window.location.reload();
           });
+        }else{
+          alert("Your accout was not Activated");
+          this.router.navigate(["active"]);
+        }
+
         }
        })
 
@@ -94,44 +134,38 @@ export class EmpLoginComponent implements OnInit {
           window.sessionStorage.setItem("emplogin",JSON.stringify(data));
             window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
 
-            this.router.navigate(["doctorpro"]);
+            this.router.navigate(["doctorpro"]).then(()=>{
+              window.location.reload();
+            });
         }
       })
       break;
    }
    case 40:{
     //Lab login logic
+
+    this.labser.CheckLogin(this.Username,this.Password).subscribe((data:any)=>{
+      if(data==null){
+        alert("You are not Registerd");
+        this.router.navigate(["login"]);
+      }else{
+        window.sessionStorage.setItem("emplogin",JSON.stringify(data));
+        window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
+   
+        this.router.navigate(["labpro"]).then(()=>{
+          window.location.reload();
+        });
+
+      }
+    })
+
     break;
  }
-    }
+}
+   
+   
+}
 
-
-    // this.recpser.checkLogin(this.Username,this.Password).subscribe((data:any)=>{
-    //   if(data==null){
-    //     alert("You are not Registerd with us");
-    //     this.router.navigate(["login"]);
-    //   }else{
-    //     window.sessionStorage.setItem("emplogin",JSON.stringify(data));
-    //     window.sessionStorage.setItem("deptno",JSON.stringify(data.deptNo.toString()));
-
-    //       this.router.navigate(["receptionpro"]).then(()=>{
-    //         window.location.reload();
-    //       });
-    //    }
-    // })
-
-
-      
-
-
-  }
-
-  
-
-
-
-
- 
 
   btn_Cancel():void{
     this.router.navigate(["home"]);

@@ -25,4 +25,8 @@ export class ReceptionService {
   checkLogin(email:string,pwd:string):Observable<IReception>{
   return  this.httpser.get<IReception>(this.HostUrl+this.RecpWebPath+"GetReceptionByEmailandPassword?Email="+email+"&Password="+pwd);
   }
+
+  UpdateRecp(recp:IReception):Observable<number>{
+   return this.httpser.put<number>(this.HostUrl+this.RecpWebPath+"UpdateReception",recp);
+  }
 }

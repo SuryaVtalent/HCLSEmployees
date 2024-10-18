@@ -34,53 +34,65 @@
 <div class="row" *ngIf="flagSecure">
   <div class="col-sm-12">
 
-    <div class="row">
-      <div class="col-sm-12">
-    
-        <!-- Header Section -->
-        <div class="row" style="background-color: #a9e1a9;height: 65px;padding-top: 10px;font-size: large;">
+      <div class="row" style="background-color: #a9e1a9;height: 65px;padding-top: 10px;font-size: large;">
           <div class="col-sm-1"></div>
-          <div class="col-sm-1">
-            
-          </div>
+          <div class="col-sm-1">  </div>
           <div class="col-sm-10" style="margin-top: 10px;text-align: right;">
             <div>
-              <input type="button" value="Logout" class="btn btn-danger" (click)="btn_LogoutClick()"  />
+              <input type="button" value="Logout" class="btn btn-danger" (click)="btn_Logout()"/>
             </div>
           </div>        
-        </div>
-      </div>
-      </div>
-    
+       </div>
 
-   
-    <div class="row" >
-      <div class="col-sm-2" *ngIf="flagRec" style="background-color: green;height: 350px;">
-        <div class="row" >
-          <div class="col-sm-12">
-            <a routerLink="receptionpro">Reception</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row" >
-        <div class="col-sm-2" *ngIf="flagHelp" style="background-color: green;height: 350px;">
-          <div class="row" >
+       <div class="row">
+        <div class="col-sm-2" *ngIf="flagRecSec" style="background-color: green;height: 470px;">
+          <div class="row">
             <div class="col-sm-12">
-              <a routerLink="helperpro">Reception</a>
+              <a routerLink="receptionpro">Reception</a>
             </div>
           </div>
-  
         </div>
-  
 
-      <div class="col-sm-10">
-        <router-outlet></router-outlet>
+        <div class="row">
+          <div class="col-sm-2" *ngIf="flagHelperSec" style="background-color: green;height: 470px;">
+            <div class="row">
+              <div class="col-sm-12">
+                <a routerLink="helperpro">Helper</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-sm-2"  style="background-color: green;height: 470px;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <a routerLink="helperpro">Helper</a>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="row">
+              <div class="col-sm-2"  style="background-color: green;height: 470px;">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <a routerLink="helperpro">Helper</a>
+                  </div>
+                </div>
+              </div>
+     -->
+
+        <div class="col-sm-10">
+          <router-outlet></router-outlet>
+        </div>
       </div>
-    </div>
+
+
+
 
 
 
   </div>
 </div>
+
+

@@ -10,6 +10,7 @@ import { ReceptionistComponent } from './Profiles/receptionist/receptionist.comp
 import { HelperComponent } from './Profiles/helper/helper.component';
 import { DoctorComponent } from './Profiles/doctor/doctor.component';
 import { LabComponent } from './Profiles/lab/lab.component';
+import { ActiveComponent } from './Admins/active/active.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:'full'},
@@ -17,18 +18,20 @@ const routes: Routes = [
   {path:"login",component:LoginComponent,
 
     children:[
-      {path:"emplogin",component:EmpLoginComponent},
+      {path:"employlogin",component:EmpLoginComponent},
   {path:"patilogin",component:PatientLoginComponent}
     ]
   }, 
     
   {path:"about",component:AboutComponent},
   {path:"contact",component:ContactComponent},
+  {path:"active",component:ActiveComponent},
 
   {path:"receptionpro",component:ReceptionistComponent},
   {path:"helperpro",component:HelperComponent},
   {path:"doctorpro",component:DoctorComponent},
   {path:"labpro",component:LabComponent},
+  
   
   {path:"**",redirectTo:"home",pathMatch:'full'}
 ];
